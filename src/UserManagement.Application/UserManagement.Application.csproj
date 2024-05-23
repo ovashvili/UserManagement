@@ -10,4 +10,8 @@
       <ProjectReference Include="..\UserManagement.Infrastructure\UserManagement.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="User\Queries\" />
+    </ItemGroup>
+
 </Project>
