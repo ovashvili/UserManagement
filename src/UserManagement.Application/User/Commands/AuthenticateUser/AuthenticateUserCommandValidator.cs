@@ -6,5 +6,10 @@ public class AuthenticateUserCommandValidator : AbstractValidator<AuthenticateUs
 {
     public AuthenticateUserCommandValidator()
     {
+        _ = RuleFor(x => x.Model.Username)
+            .NotEmpty();
+
+        _ = RuleFor(x => x.Model.Password)
+            .NotEmpty();
     }
 }

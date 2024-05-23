@@ -1,5 +1,4 @@
 using UserManagement.Persistence.Context;
-using System;
 
 namespace UserManagement.Persistence.UnitOfWork;
 
