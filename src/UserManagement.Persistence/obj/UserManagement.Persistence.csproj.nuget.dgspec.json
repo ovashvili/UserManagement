@@ -1,0 +1,120 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/ovashnik/repos/UserManagement/src/UserManagement.Persistence/UserManagement.Persistence.csproj": {}
+  },
+  "projects": {
+    "/Users/ovashnik/repos/UserManagement/src/UserManagement.Domain/UserManagement.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ovashnik/repos/UserManagement/src/UserManagement.Domain/UserManagement.Domain.csproj",
+        "projectName": "UserManagement.Domain",
+        "projectPath": "/Users/ovashnik/repos/UserManagement/src/UserManagement.Domain/UserManagement.Domain.csproj",
+        "packagesPath": "/Users/ovashnik/.nuget/packages/",
+        "outputPath": "/Users/ovashnik/repos/UserManagement/src/UserManagement.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ovashnik/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://singular.jfrog.io/artifactory/api/nuget/v3/core-nuget": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ovashnik/repos/UserManagement/src/UserManagement.Persistence/UserManagement.Persistence.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ovashnik/repos/UserManagement/src/UserManagement.Persistence/UserManagement.Persistence.csproj",
+        "projectName": "UserManagement.Persistence",
+        "projectPath": "/Users/ovashnik/repos/UserManagement/src/UserManagement.Persistence/UserManagement.Persistence.csproj",
+        "packagesPath": "/Users/ovashnik/.nuget/packages/",
+        "outputPath": "/Users/ovashnik/repos/UserManagement/src/UserManagement.Persistence/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ovashnik/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://singular.jfrog.io/artifactory/api/nuget/v3/core-nuget": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/ovashnik/repos/UserManagement/src/UserManagement.Domain/UserManagement.Domain.csproj": {
+                "projectPath": "/Users/ovashnik/repos/UserManagement/src/UserManagement.Domain/UserManagement.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
