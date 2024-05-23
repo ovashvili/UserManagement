@@ -1,15 +1,12 @@
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using UserManagement.Domain.Entities;
 
 namespace UserManagement.Persistence.Context;
 
-public class UserManagementDbContext(DbContextOptions<UserManagementDbContext> options)
-    : IdentityDbContext<User>(options)
+public class UserManagementDbContext(DbContextOptions<UserManagementDbContext> options) : DbContext(options)
 {
-    protected override void OnModelCreating(ModelBuilder builder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(builder);
-        builder.ApplyConfigurationsFromAssembly(typeof(UserManagementDbContext).Assembly);
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(UserManagementDbContext).Assembly);
     }
 }
