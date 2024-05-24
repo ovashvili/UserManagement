@@ -1,6 +1,6 @@
 using MediatR;
 using UserManagement.Application.Common.Abstractions;
-using UserManagement.Application.Common.Models;
+using UserManagement.Domain.Common.Models;
 
 namespace UserManagement.Application.User.Commands.DeleteUser;
 
@@ -8,6 +8,6 @@ public class DeleteUserCommandHandler(IUserService userService) : IRequestHandle
 {
     public async Task<Result<string>> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
     {
-        return await userService.DeleteAsync(request.Id);
+        return await userService.DeleteAsync(request.Id, cancellationToken);
     }
 }

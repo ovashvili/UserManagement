@@ -1,10 +1,10 @@
 using MediatR;
-using UserManagement.Application.Common.Models;
+using UserManagement.Domain.Common.Models;
 using UserManagement.Application.Common.Models.Dto;
 
 namespace UserManagement.Application.User.Queries.GetUserById;
 
 public class GetUserByIdQuery : IRequest<Result<UserDto>>
 {
-    public string Id { get; set; }
+    public Guid Id { get; set; }
 }

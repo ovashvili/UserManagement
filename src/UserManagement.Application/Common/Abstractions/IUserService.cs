@@ -1,4 +1,4 @@
-using UserManagement.Application.Common.Models;
+using UserManagement.Domain.Common.Models;
 using UserManagement.Application.Common.Models.Dto;
 using UserManagement.Application.User.Commands.AuthenticateUser;
 using UserManagement.Application.User.Commands.RegisterUser;
@@ -8,10 +8,10 @@ namespace UserManagement.Application.Common.Abstractions;
 
 public interface IUserService
 {
-    Task<Result<AuthenticateUserResponse>> AuthenticateAsync(AuthenticateUserCommandModel model);
-    Task<Result<IEnumerable<UserDto>>> GetAllAsync();
-    Task<Result<UserDto>> GetByIdAsync(string id);
-    Task<Result<UserDto>> RegisterAsync(RegisterUserCommandModel model);
-    Task<Result<UserDto>> UpdateAsync(string id, UpdateUserCommandModel model);
-    Task<Result<string>> DeleteAsync(string id);
+    Task<Result<AuthenticateUserResponse>> AuthenticateAsync(AuthenticateUserCommandModel model, CancellationToken cancellationToken = default);
+    Task<Result<IEnumerable<UserDto>>> GetAllAsync(CancellationToken cancellationToken = default);
+    Task<Result<UserDto>> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<Result<UserDto>> RegisterAsync(RegisterUserCommandModel model, CancellationToken cancellationToken = default);
+    Task<Result<UserDto>> UpdateAsync(Guid id, UpdateUserCommandModel model, CancellationToken cancellationToken = default);
+    Task<Result<string>> DeleteAsync(Guid id, CancellationToken cancellationToken = default);
 }

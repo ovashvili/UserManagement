@@ -1,5 +1,5 @@
 using MediatR;
-using UserManagement.Application.Common.Models;
+using UserManagement.Domain.Common.Models;
 
 namespace UserManagement.Application.User.Commands.AuthenticateUser;
 

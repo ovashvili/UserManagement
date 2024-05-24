@@ -1,4 +1,4 @@
-namespace UserManagement.Domain.Entities;
+namespace UserManagement.Domain.Common.Entities;
 
 public class BaseEntity
 {

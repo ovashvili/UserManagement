@@ -1,6 +1,7 @@
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using UserManagement.Domain.Common.Abstractions;
-using UserManagement.Domain.Entities;
+using UserManagement.Domain.Common.Entities;
 using UserManagement.Domain.Exceptions;
 using UserManagement.Persistence.Context;
 
@@ -29,15 +30,15 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     public async Task<T> AddAsync(T entity, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(entity);
-        await _dbSet.AddAsync(entity, CancellationToken.None);
-        return entity;
+        var entityEntry = await _dbSet.AddAsync(entity, CancellationToken.None);
+        return entityEntry.Entity;
     }
 
-    public Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
+    public Task<T> UpdateAsync(T entity, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(entity);
-        _dbSet.Update(entity);
-        return Task.CompletedTask;
+        var updatedEntityEntry = _dbSet.Update(entity);
+        return Task.FromResult(updatedEntityEntry.Entity);
     }
 
     public Task DeleteAsync(T entity, CancellationToken cancellationToken = default)
@@ -55,5 +56,15 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
             throw new EntityNotFoundException($"Entity with ID '{id}' not found.");
             
         await DeleteAsync(entity, CancellationToken.None);
+    }
+    
+    public async Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> condition, CancellationToken cancellationToken = default)
+    {
+        return await _dbSet.AsQueryable().FirstOrDefaultAsync(condition, cancellationToken);
+    }
+    
+    public async Task<bool> AnyAsync(Expression<Func<T, bool>> condition, CancellationToken cancellationToken = default)
+    {
+        return await _dbSet.AsQueryable().AnyAsync(condition, cancellationToken);
     }
 }

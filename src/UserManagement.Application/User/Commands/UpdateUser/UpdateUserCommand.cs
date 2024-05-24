@@ -1,12 +1,12 @@
 using MediatR;
-using UserManagement.Application.Common.Models;
+using UserManagement.Domain.Common.Models;
 using UserManagement.Application.Common.Models.Dto;
 
 namespace UserManagement.Application.User.Commands.UpdateUser;
 
 public class UpdateUserCommand: IRequest<Result<UserDto>>
 {
-    public string Id { get; set; }
+    public Guid Id { get; set; }
     public UpdateUserCommandModel Model { get; set; }
 }
 

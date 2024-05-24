@@ -1,6 +1,6 @@
 using MediatR;
 using UserManagement.Application.Common.Abstractions;
-using UserManagement.Application.Common.Models;
+using UserManagement.Domain.Common.Models;
 
 namespace UserManagement.Application.User.Commands.AuthenticateUser;
 
@@ -9,6 +9,6 @@ public class AuthenticateUserCommandHandler(IUserService userService)
 {
     public Task<Result<AuthenticateUserResponse>> Handle(AuthenticateUserCommand request, CancellationToken cancellationToken)
     {
-        return userService.AuthenticateAsync(request.Model);
+        return userService.AuthenticateAsync(request.Model, cancellationToken);
     }
 }

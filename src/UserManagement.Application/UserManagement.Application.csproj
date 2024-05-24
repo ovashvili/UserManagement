@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\UserManagement.Infrastructure\UserManagement.Infrastructure.csproj" />
+      <ProjectReference Include="..\UserManagement.Persistence\UserManagement.Persistence.csproj" />
     </ItemGroup>
 
 </Project>

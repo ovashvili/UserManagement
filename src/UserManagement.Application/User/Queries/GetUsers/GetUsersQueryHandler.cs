@@ -1,7 +1,7 @@
 using MediatR;
 using UserManagement.Application.Common.Abstractions;
-using UserManagement.Application.Common.Models;
 using UserManagement.Application.Common.Models.Dto;
+using UserManagement.Domain.Common.Models;
 
 namespace UserManagement.Application.User.Queries.GetUsers;
 

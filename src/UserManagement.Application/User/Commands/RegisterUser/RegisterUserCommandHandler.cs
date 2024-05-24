@@ -1,6 +1,6 @@
 using MediatR;
 using UserManagement.Application.Common.Abstractions;
-using UserManagement.Application.Common.Models;
+using UserManagement.Domain.Common.Models;
 using UserManagement.Application.Common.Models.Dto;
 
 namespace UserManagement.Application.User.Commands.RegisterUser;
@@ -10,6 +10,6 @@ public class RegisterUserCommandHandler(IUserService userService)
 {
     public async Task<Result<UserDto>> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
     {
-        return await userService.RegisterAsync(request.Model);
+        return await userService.RegisterAsync(request.Model, cancellationToken);
     }
 }
