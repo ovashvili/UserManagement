@@ -9,6 +9,6 @@ public class AuthenticateUserCommandHandler(IUserService userService)
 {
     public Task<Result<AuthenticateUserResponse>> Handle(AuthenticateUserCommand request, CancellationToken cancellationToken)
     {
-        return userService.AuthenticateAsync(request.Model, cancellationToken);
+        return userService.AuthenticateAsync(request.UserId, request.Model, cancellationToken);
     }
 }

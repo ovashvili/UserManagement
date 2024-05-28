@@ -10,8 +10,6 @@ public static class ResponseHelper
         new()
         {
             { StatusCodes.Success, result => new OkObjectResult(result) },
-            { StatusCodes.Accepted, result => new OkObjectResult(result) },
-            { StatusCodes.Created, result => new OkObjectResult(result) },
             { StatusCodes.WrongRequest, result => new BadRequestObjectResult(result) },
             { StatusCodes.BadRequest, result => new BadRequestObjectResult(result) },
             { StatusCodes.Unauthorized, result => new UnauthorizedObjectResult(result) },

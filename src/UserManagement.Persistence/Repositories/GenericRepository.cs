@@ -58,12 +58,21 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         await DeleteAsync(entity, CancellationToken.None);
     }
     
-    public async Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> condition, CancellationToken cancellationToken = default)
+    public async Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> condition, 
+        Func<IQueryable<T>, IQueryable<T>>? include = null, 
+        CancellationToken cancellationToken = default)
     {
-        return await _dbSet.AsQueryable().FirstOrDefaultAsync(condition, cancellationToken);
+        IQueryable<T> query = _dbSet.AsQueryable();
+
+        if (include != null)
+        {
+            query = include(query);
+        }
+
+        return await query.FirstOrDefaultAsync(condition, cancellationToken);
     }
     
-    public async Task<bool> AnyAsync(Expression<Func<T, bool>> condition, CancellationToken cancellationToken = default)
+    public async Task<bool> AnyAsync(Expression<Func<T, bool>> condition = default!, CancellationToken cancellationToken = default)
     {
         return await _dbSet.AsQueryable().AnyAsync(condition, cancellationToken);
     }

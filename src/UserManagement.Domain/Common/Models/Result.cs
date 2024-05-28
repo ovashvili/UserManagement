@@ -47,7 +47,7 @@ public class Result<TData> : Result
         return new Result<TData>
         {
             StatusCode = code,
-            IsSuccessStatusCode = true,
+            IsSuccessStatusCode = false,
             Message = message
         };
     }

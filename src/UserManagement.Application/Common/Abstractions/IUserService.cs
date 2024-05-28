@@ -8,7 +8,7 @@ namespace UserManagement.Application.Common.Abstractions;
 
 public interface IUserService
 {
-    Task<Result<AuthenticateUserResponse>> AuthenticateAsync(AuthenticateUserCommandModel model, CancellationToken cancellationToken = default);
+    Task<Result<AuthenticateUserResponse>> AuthenticateAsync(Guid userId, AuthenticateUserCommandModel model, CancellationToken cancellationToken = default);
     Task<Result<IEnumerable<UserDto>>> GetAllAsync(CancellationToken cancellationToken = default);
     Task<Result<UserDto>> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
     Task<Result<UserDto>> RegisterAsync(RegisterUserCommandModel model, CancellationToken cancellationToken = default);

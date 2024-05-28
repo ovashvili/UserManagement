@@ -11,4 +11,11 @@
       <ProjectReference Include="..\UserManagement.Persistence\UserManagement.Persistence.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <PackageReference Include="MediatR" Version="12.2.0" />
+        <PackageReference Include="MediatR.Extensions.FluentValidation.AspNetCore" Version="5.1.0" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjectionFixed" Version="5.1.2" />
+        <PackageReference Include="AutoMapper" Version="13.0.1" />
+    </ItemGroup>
+    
 </Project>

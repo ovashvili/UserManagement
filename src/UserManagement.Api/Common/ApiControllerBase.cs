@@ -10,6 +10,7 @@ namespace UserManagement.Api.Common;
 [ProducesResponseType(StatusCodes.Status400BadRequest)]
 [ProducesResponseType(StatusCodes.Status401Unauthorized)]
 [ProducesResponseType(StatusCodes.Status403Forbidden)]
+[ProducesResponseType(StatusCodes.Status409Conflict)]
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 [ApiConventionType(typeof(DefaultApiConventions))]
 public class ApiControllerBase(IMediator mediator) : ControllerBase

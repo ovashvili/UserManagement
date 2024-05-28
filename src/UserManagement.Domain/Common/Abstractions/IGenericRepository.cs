@@ -11,7 +11,8 @@ public interface IGenericRepository<T> where T : BaseEntity
     Task<T> UpdateAsync(T entity, CancellationToken cancellationToken = default);
     Task DeleteAsync(T entity, CancellationToken cancellationToken = default);
     Task DeleteByIdAsync(Guid id, CancellationToken cancellationToken = default);
-    Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> condition, CancellationToken cancellationToken = default);
     Task<bool> AnyAsync(Expression<Func<T, bool>> condition, CancellationToken cancellationToken = default);
+    Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> condition,
+        Func<IQueryable<T>, IQueryable<T>>? include = null, CancellationToken cancellationToken = default);
 }
     

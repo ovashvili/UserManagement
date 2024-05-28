@@ -6,7 +6,7 @@ public class BCryptPasswordService : IPasswordService
 {
     public string HashPassword(string password)
     {
-        return BCrypt.Net.BCrypt.HashPassword(password);
+        return BCrypt.Net.BCrypt.EnhancedHashPassword(password);
     }
 
     public bool VerifyPassword(string password, string passwordHash)

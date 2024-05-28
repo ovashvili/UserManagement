@@ -8,9 +8,9 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> modelBuilder)
     {
-        modelBuilder.ToTable("Users"); // Explicitly specify the table name
+        modelBuilder.ToTable("Users");
 
-        modelBuilder.HasKey(u => u.Id); // Explicitly define the primary key
+        modelBuilder.HasKey(u => u.Id);
 
         modelBuilder.Property(u => u.FirstName)
             .IsUnicode(false)
@@ -20,6 +20,13 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .IsRequired()
             .IsUnicode(false)
             .HasMaxLength(80);
+
+        modelBuilder.Property(u => u.UserName)
+            .IsRequired()
+            .HasMaxLength(32);
+
+        modelBuilder.HasIndex(u => u.UserName)
+            .IsUnique();
 
         modelBuilder.Property(u => u.Email)
             .IsRequired()

@@ -18,6 +18,6 @@ public class MappingProfile : Profile
 
         CreateMap<Domain.Entities.User, AuthenticateUserResponse>();
 
-        // CreateMap<Role, RoleDto>();    
+        CreateMap<Domain.Entities.Role, RoleDto>();    
     }
 }
