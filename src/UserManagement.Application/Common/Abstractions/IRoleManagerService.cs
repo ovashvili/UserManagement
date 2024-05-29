@@ -5,7 +5,7 @@ namespace UserManagement.Application.Common.Abstractions;
 
 public interface IRoleManagerService
 {
-    Task<Result<string>> AddAsync(string roleName, CancellationToken cancellationToken = default);
+    Task<Result<RoleDto>> AddAsync(string roleName, CancellationToken cancellationToken = default);
     Task<Result<IEnumerable<RoleDto>>> GetUserRolesAsync(Guid userId, CancellationToken cancellationToken = default);
     Task<Result<string>> AddRoleToUserAsync(Guid userId, string roleName, CancellationToken cancellationToken = default);
     Task<Result<string>> RemoveRoleFromUserAsync(Guid userId, string roleName, CancellationToken cancellationToken = default);

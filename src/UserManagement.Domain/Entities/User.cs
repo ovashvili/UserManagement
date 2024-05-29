@@ -1,4 +1,3 @@
-using System.Security.Cryptography;
 using System.Text.Json.Serialization;
 using UserManagement.Domain.Common.Entities;
 

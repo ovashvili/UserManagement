@@ -1,4 +1,3 @@
-using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using UserManagement.Domain.Common.Abstractions;
 using UserManagement.Domain.Entities;
@@ -20,14 +19,14 @@ namespace UserManagement.Persistence.Repositories
             _userRoleDbSet = _context.Set<UserRole>();
         }
 
-        public Task<string> AddAsync(string roleName, CancellationToken cancellationToken = default)
+        public async Task<Role> AddAsync(string roleName, CancellationToken cancellationToken = default)
         {
             var role = new Role { Name = roleName };
-            _roleDbSet.Add(role);
-            return Task.FromResult(roleName);
+            var entityEntry = await _roleDbSet.AddAsync(role, cancellationToken);
+            return entityEntry.Entity;
         }
 
-        public async Task<string> DeleteAsync(string roleName, CancellationToken cancellationToken = default)
+        public async Task DeleteAsync(string roleName, CancellationToken cancellationToken = default)
         {
             var role = await _roleDbSet.SingleOrDefaultAsync(r => r.Name == roleName, cancellationToken);
             
@@ -35,7 +34,6 @@ namespace UserManagement.Persistence.Repositories
                 throw new EntityNotFoundException($"Role not found. RoleName: {roleName}");
 
             _roleDbSet.Remove(role);
-            return roleName;
         }
 
         public async Task<IEnumerable<Role>> GetAllAsync(bool trackEntities = true,
@@ -53,7 +51,7 @@ namespace UserManagement.Persistence.Repositories
                 .Select(ur => ur.Role).ToListAsync(cancellationToken);
         }
 
-        public async Task<string> AddRoleToUserAsync(Guid userId, string roleName,
+        public async Task AddRoleToUserAsync(Guid userId, string roleName,
             CancellationToken cancellationToken = default)
         {
             var role = await _roleDbSet.SingleOrDefaultAsync(r => r.Name == roleName, cancellationToken);
@@ -62,11 +60,10 @@ namespace UserManagement.Persistence.Repositories
                 throw new EntityNotFoundException($"User role not found. UserId: {userId}, RoleName: {roleName}");
 
             var userRole = new UserRole { UserId = userId, RoleId = role.Id };
-            _userRoleDbSet.Add(userRole);
-            return roleName;
+            await _userRoleDbSet.AddAsync(userRole, cancellationToken);
         }
 
-        public async Task<string> RemoveRoleFromUserAsync(Guid userId, string roleName,
+        public async Task RemoveRoleFromUserAsync(Guid userId, string roleName,
             CancellationToken cancellationToken = default)
         {
             var role = await _roleDbSet.SingleOrDefaultAsync(r => r.Name == roleName, cancellationToken);
@@ -81,7 +78,6 @@ namespace UserManagement.Persistence.Repositories
                 throw new EntityNotFoundException($"User role not found. UserId: {userId}, RoleName: {roleName}");
 
             _userRoleDbSet.Remove(userRole);
-            return roleName;
         }
 
         public async Task<bool> AnyAsync(CancellationToken cancellationToken = default)

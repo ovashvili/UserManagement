@@ -1,5 +1,4 @@
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using UserManagement.Application.Common.Abstractions;
 using UserManagement.Application.Common.Models.Dto;
 using UserManagement.Domain.Common.Models;

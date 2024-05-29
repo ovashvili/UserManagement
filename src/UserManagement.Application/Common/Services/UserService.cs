@@ -119,6 +119,6 @@ public class UserService(
         
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return Result<string>.Succeed("Deleted");
+        return Result<string>.Succeed("Deleted Successfully.");
     }
 }

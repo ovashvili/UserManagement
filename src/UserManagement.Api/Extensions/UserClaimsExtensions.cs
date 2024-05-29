@@ -12,5 +12,18 @@ public static class UserClaimsExtensions
             return userId;
 
         return Guid.Empty;
-    }   
+    }
+
+    public static bool HasPermission(this HttpContext context, Guid targetUserId)
+    {
+        var hasAdminClaim = context.User.Claims.Any(x =>
+            x.Type == ClaimTypes.Role && x.Value.Equals("Admin", StringComparison.OrdinalIgnoreCase));
+
+        if (hasAdminClaim)
+            return true;
+        
+        var currentUserId = context.GetUserId();
+        
+        return currentUserId == targetUserId;
+    }
 }

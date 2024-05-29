@@ -1,17 +1,17 @@
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UserManagement.Domain.Common.Models;
 
 namespace UserManagement.Api.Common;
 
 [ApiController]
 [Produces("application/json")]
 [ProducesResponseType(StatusCodes.Status200OK)]
-[ProducesResponseType(StatusCodes.Status400BadRequest)]
-[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-[ProducesResponseType(StatusCodes.Status403Forbidden)]
-[ProducesResponseType(StatusCodes.Status409Conflict)]
-[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+[ProducesResponseType(typeof(Result),StatusCodes.Status400BadRequest)]
+[ProducesResponseType(typeof(Result),StatusCodes.Status401Unauthorized)]
+[ProducesResponseType(typeof(Result),StatusCodes.Status403Forbidden)]
+[ProducesResponseType(typeof(Result),StatusCodes.Status409Conflict)]
+[ProducesResponseType(typeof(Result),StatusCodes.Status500InternalServerError)]
 [ApiConventionType(typeof(DefaultApiConventions))]
 public class ApiControllerBase(IMediator mediator) : ControllerBase
 {

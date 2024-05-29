@@ -15,6 +15,7 @@ public static class ResponseHelper
             { StatusCodes.Unauthorized, result => new UnauthorizedObjectResult(result) },
             { StatusCodes.Conflict, result => new ConflictObjectResult(result) },
             { StatusCodes.NotFound, result => new NotFoundObjectResult(result) },
+            { StatusCodes.Forbidden, result => CreateCustomErrorResult(result, 403) },
         };
     
     public static ActionResult CreateResponse(Result result)
@@ -22,7 +23,7 @@ public static class ResponseHelper
         if (StatusCodeMap.TryGetValue(result.StatusCode, out var value))
             return value(result);
 
-        return CreateGenericFailedErrorResult(result);
+        return CreateCustomErrorResult(result);
     }
 
     public static ActionResult<Result<T>> CreateResponse<T>(Result<T> result)
@@ -30,14 +31,14 @@ public static class ResponseHelper
         if (StatusCodeMap.TryGetValue(result.StatusCode, out var value))
             return value(result);
 
-        return CreateGenericFailedErrorResult(result);
+        return CreateCustomErrorResult(result);
     }
 
-    private static ObjectResult CreateGenericFailedErrorResult(Result result)
+    public static ObjectResult CreateCustomErrorResult(Result result, int statusCode = 500)
     {
         return new ObjectResult(new { result.StatusCode, result.Message })
         {
-            StatusCode = Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError
+            StatusCode = statusCode
         };
     }
 }

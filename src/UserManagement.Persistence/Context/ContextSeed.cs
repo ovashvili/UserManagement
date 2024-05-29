@@ -1,6 +1,5 @@
 using UserManagement.Domain.Common.Abstractions;
 using UserManagement.Domain.Entities;
-using UserManagement.Persistence.Repositories;
 using UserManagement.Persistence.UnitOfWork;
 
 namespace UserManagement.Persistence.Context;
